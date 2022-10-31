@@ -1,0 +1,56 @@
+local weapons = ""
+local oldpos = nil
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
+
+local Window = Library.CreateLib("Script for beaming studio", "BloodTheme")
+
+local Tab = Window:NewTab("Player Manipulation")
+
+local Section = Tab:NewSection("Typical")
+
+Section:NewTextBox("Change Speed", "Just Enter number", function(txt)
+	game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = txt
+end)
+
+Section:NewTextBox("Change Jump Power", "Just Enter number", function(txt)
+	game.Players.LocalPlayer.Character.Humanoid.JumpPower = txt
+end)
+
+local Section = Tab:NewSection("Functions")
+
+Section:NewButton("Unragdoll", "Let you unragdoll automatically", function()
+    while true do
+    wait(0.1)
+    local ohBoolean1 = false
+    game:GetService("ReplicatedStorage").Events.RagdollEvent:FireServer(ohBoolean1)
+    end
+end)
+
+Section:NewButton("Toggle PvP", "You can toggle PvP if you want", function()
+game:GetService("ReplicatedStorage").Events.PvpToggleEvent:FireServer()
+end)
+
+Section:NewButton("Respawn", "Respawn cuz why not", function()
+game:GetService("ReplicatedStorage").Events.RespawnEvent:FireServer()
+end)
+
+local Tab = Window:NewTab("Player Selections")
+
+local Section = Tab:NewSection("Weapon")
+
+Section:NewLabel("You must be in group to get group weapons")
+
+Section:NewDropdown("Select Weapon", "Choose any Weapon", {"Baseball Bat", "Crowbar", "Pan", "Knife", "Fire Axe"}, function(currentOption)
+    weapons = currentOption
+end)
+
+Section:NewButton("Get Weapon", "Gives Weapon that you selected", function()
+    oldpos = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Map.Shop.WeaponGivers[weapons].CFrame
+    wait(0.2)
+    fireproximityprompt(game:GetService("Workspace").Map.Shop.WeaponGivers[weapons].ProximityPrompt)
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = oldpos
+    wait(0.1)
+    local ohBoolean1 = false
+    game:GetService("ReplicatedStorage").Events.RagdollEvent:FireServer(ohBoolean1)
+end)
