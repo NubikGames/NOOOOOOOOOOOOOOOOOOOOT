@@ -1,3 +1,17 @@
+local plr = game:GetService("Players").LocalPlayer
+if game.PlaceId ~= 10702033108 then
+plr:Kick("Unsupported Game")
+else
+local bindableFunction= Instance.new("BindableFunction")
+game.StarterGui:SetCore("SendNotification", {
+   Title = "Welcome";
+   Text = "Created for beaming studio#0631";
+   Icon = "";
+   Duration = "10";
+   callbakc = bindableFunction;
+})
+end
+-- KICK SCRIPT --
 local weapons = ""
 local locations = ""
 local oldpos = nil
