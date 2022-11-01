@@ -1,4 +1,5 @@
 local weapons = ""
+local locations = ""
 local oldpos = nil
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
 
@@ -26,6 +27,15 @@ Section:NewButton("Unragdoll", "Let you unragdoll automatically", function()
     end
 end)
 
+Section:NewButton("Unragdoll (Faster)", "Can be laggy", function()
+    while true do
+    wait(0.01)
+    local ohBoolean1 = false
+    game:GetService("ReplicatedStorage").Events.RagdollEvent:FireServer(ohBoolean1)
+    end
+end)
+
+
 Section:NewButton("Toggle PvP", "You can toggle PvP if you want", function()
 game:GetService("ReplicatedStorage").Events.PvpToggleEvent:FireServer()
 end)
@@ -50,7 +60,61 @@ Section:NewButton("Get Weapon", "Gives Weapon that you selected", function()
     wait(0.2)
     fireproximityprompt(game:GetService("Workspace").Map.Shop.WeaponGivers[weapons].ProximityPrompt)
     game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = oldpos
-    wait(0.1)
+    wait(0.5)
     local ohBoolean1 = false
     game:GetService("ReplicatedStorage").Events.RagdollEvent:FireServer(ohBoolean1)
 end)
+
+local Section = Tab:NewSection("Teleport")
+
+Section:NewDropdown("Select Location", "Choose any Location", {"Roof", "Mountain", "Default", "Slide", "Stairs", "Spiral Stairs", "Pipes Fall", "Pipes Fall"}, function(currentOption)
+    locations = currentOption
+end)
+
+Section:NewButton("Tp to Location", "Teleports you to location that you selected", function()
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Teleports[locations].CFrame
+    wait(0.5)
+    local ohBoolean1 = false
+    game:GetService("ReplicatedStorage").Events.RagdollEvent:FireServer(ohBoolean1)
+end)
+
+Section:NewTextBox("Tp to Player", "Teleport to anyone", function(txt)
+        local Players = game:GetService("Players")
+	local plr = Players:FindFirstChild(txt)
+	if plr then
+	game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = plr.Character.HumanoidRootPart.CFrame
+	 wait(0.5)
+         local ohBoolean1 = false
+         game:GetService("ReplicatedStorage").Events.RagdollEvent:FireServer(ohBoolean1)
+	 end
+end)
+
+local Tab = Window:NewTab("Player PvP")
+
+local Section = Tab:NewSection("Trolling")
+
+Section:NewButton("Launch Lag Switch", "Lag Switch is op thing", function()
+    loadstring(game:HttpGet("https://paste.gg/p/anonymous/d3492bd620bd4c46b54680ac80b0fa0d/files/161ddd9c992c4ceba3c298458d45188a/raw", true))()
+end)
+
+Section:NewButton("Launch Fling Gui", "Fling People cuz it's funny", function()
+    loadstring(game:HttpGet('https://pastebin.com/raw/r97d7dS0', true))()
+end)
+
+local Section = Tab:NewSection("Visuals")
+
+Section:NewButton("Esp", "Can detect if player in pvp or no", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/NubikGames/ess/main/ss"))()
+end)
+
+local Tab = Window:NewTab("Settings")
+
+Section:NewKeybind("Toggle UI", "You can choose any if you want", Enum.KeyCode.P, function()
+	Library:ToggleUI()
+end)
+
+Section:NewButton("Infinity Yield", "Simple and Useful Admin", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source"))()
+end)
+
+Section:NewLabel("Credits to Dr.Rox#7485")
