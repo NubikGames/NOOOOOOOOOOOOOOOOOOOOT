@@ -109,6 +109,8 @@ end)
 
 local Tab = Window:NewTab("Settings")
 
+local Section = Tab:NewSection("Useful")
+
 Section:NewKeybind("Toggle UI", "You can choose any if you want", Enum.KeyCode.P, function()
 	Library:ToggleUI()
 end)
@@ -116,5 +118,7 @@ end)
 Section:NewButton("Infinity Yield", "Simple and Useful Admin", function()
     loadstring(game:HttpGet("https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source"))()
 end)
+
+local Section = Tab:NewSection("Credit")
 
 Section:NewLabel("Credits to Dr.Rox#7485")
