@@ -5,7 +5,7 @@ else
 local bindableFunction= Instance.new("BindableFunction")
 game.StarterGui:SetCore("SendNotification", {
    Title = "Welcome";
-   Text = "Created for beaming studio#0631";
+   Text = "Created for Watcher#7437";
    Icon = "";
    Duration = "10";
    callbakc = bindableFunction;
@@ -17,7 +17,7 @@ local locations = ""
 local oldpos = nil
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
 
-local Window = Library.CreateLib("Script for beaming studio", "BloodTheme")
+local Window = Library.CreateLib("Script for Watcher", "BloodTheme")
 
 local Tab = Window:NewTab("Player Manipulation")
 
